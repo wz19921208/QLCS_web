@@ -1,0 +1,1179 @@
+/* ============================================================
+   青鸾传世 Replica - Styles
+   设计风格: 高端, 极简, 白色, 大留白, 黑白配色
+   ============================================================ */
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #0a0a0a;
+  --color-muted: #6b6b6b;
+  --color-line: #e5e5e5;
+  --color-accent: #1a1a1a;
+  --font-en: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-cn);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============ 加载动画遮罩 ============ */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#loading-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.loading-logo {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--color-accent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.loading-bar {
+  width: 120px;
+  height: 2px;
+  background: var(--color-line);
+  overflow: hidden;
+}
+
+.loading-bar span {
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: var(--color-accent);
+  animation: loading-move 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes loading-move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ============ 页头 ============ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 84px;
+  background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+  height: 68px;
+}
+
+/* Logo */
+#logo {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+  line-height: 1;
+  user-select: none;
+}
+
+#logo:hover {
+  opacity: 0.8;
+}
+
+/* 导航 */
+.main-navigation {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.main-navigation nav > ul {
+  display: flex;
+  list-style: none;
+  gap: 36px;
+}
+
+.main-navigation nav > ul li a {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  color: var(--color-text);
+  padding: 8px 0;
+  transition: var(--transition);
+}
+
+/* 下划线动画 */
+.main-navigation nav > ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.main-navigation nav > ul li a:hover {
+  color: var(--color-accent);
+}
+
+.main-navigation nav > ul li a:hover::after {
+  width: 100%;
+}
+
+/* 当前页导航高亮 */
+.main-navigation nav > ul li a.active {
+  color: var(--color-accent);
+}
+
+.main-navigation nav > ul li a.active::after {
+  width: 100%;
+}
+
+/* 语言切换 */
+.language-switcher {
+  display: flex;
+  gap: 14px;
+  border-left: 1px solid var(--color-line);
+  padding-left: 24px;
+}
+
+.language-switcher a {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+  transition: var(--transition);
+}
+
+.language-switcher a.active {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.language-switcher a:hover {
+  color: var(--color-accent);
+}
+
+/* 菜单按钮（移动端） */
+#header-menu {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon span {
+  display: block;
+  height: 2px;
+  background: var(--color-accent);
+  transition: var(--transition);
+}
+
+/* ============ 主屏 - 视频轮播区 ============ */
+.homepage-carousel {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 视频/图片占位 - 用色块+渐变模拟 */
+.slide-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slide-media.c1 { background: linear-gradient(135deg, #e8e8e8 0%, #f7f7f7 100%); }
+.slide-media.c2 { background: linear-gradient(135deg, #dfe3e8 0%, #f4f6f8 100%); }
+.slide-media.c3 { background: linear-gradient(135deg, #ececec 0%, #ffffff 100%); }
+.slide-media.c4 { background: linear-gradient(135deg, #e2e5e9 0%, #f6f7f9 100%); }
+
+/* 在色块上加一些装饰性几何图形做视觉区分 */
+.slide-media::before,
+.slide-media::after {
+  content: '';
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.slide-media::before {
+  width: 420px;
+  height: 420px;
+  top: 20%;
+  left: -120px;
+  transform: rotate(45deg);
+}
+
+.slide-media::after {
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  right: 8%;
+  transform: rotate(45deg);
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* 幻灯片文字内容 */
+.slide-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  color: var(--color-text);
+}
+
+.slide-content .eyebrow {
+  font-size: 13px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 20px;
+  animation: fadeUp 1s ease both;
+}
+
+.slide-content h1 {
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  max-width: 800px;
+  color: var(--color-accent);
+  animation: fadeUp 1s ease 0.15s both;
+}
+
+.slide-content .sub {
+  margin-top: 22px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #555;
+  letter-spacing: 0.5px;
+  max-width: 560px;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+.slide-content .cta {
+  margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  border: 1px solid var(--color-accent);
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+  transition: var(--transition);
+  animation: fadeUp 1s ease 0.45s both;
+}
+
+.slide-content .cta:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 轮播控制按钮 */
+.carousel-nav {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-dots .dot {
+  width: 34px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carousel-dots .dot.active {
+  background: var(--color-accent);
+}
+
+.carousel-arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.carousel-arrows button {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 24px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-arrows button:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ============ 简介区块 ============ */
+.about-section {
+  padding: 120px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 28px;
+}
+
+.about-section h2 {
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  max-width: 800px;
+}
+
+.about-section h2 strong {
+  font-weight: 500;
+}
+
+.about-section p.lead {
+  margin-top: 28px;
+  font-size: 17px;
+  line-height: 2;
+  color: #444;
+  max-width: 900px;
+  font-weight: 300;
+}
+
+/* 了解更多链接 */
+.story-more {
+  margin-top: 48px; /* 与上方文字空一行间隔 */
+}
+
+.story-more .more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.story-more .more-link:hover {
+  opacity: 0.6;
+  gap: 14px;
+}
+
+/* 团队介绍 */
+.team-block {
+  margin-top: 70px;
+  padding-top: 50px;
+}
+
+.team-block h3 {
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  margin-bottom: 28px;
+  color: var(--color-accent);
+}
+
+.team-block p {
+  font-size: 17px;
+  line-height: 2;
+  color: #444;
+  max-width: 900px;
+  font-weight: 300;
+}
+
+/* 认识我们的团队链接 */
+.team-more {
+  margin-top: 48px; /* 与上方文字空一行间隔 */
+}
+
+.team-more .more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.team-more .more-link:hover {
+  opacity: 0.6;
+  gap: 14px;
+}
+
+/* 统计 / 特色 */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-top: 70px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 50px;
+}
+
+.stat .num {
+  font-size: 46px;
+  font-weight: 300;
+  color: var(--color-accent);
+  font-family: var(--font-en);
+  letter-spacing: 1px;
+}
+
+.stat .label {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--color-muted);
+}
+
+/* ============ 项目展示区（色块占位） ============ */
+.projects-section {
+  background: #f6f6f6;
+  padding: 120px 48px;
+}
+
+/* 项目主视觉大图（色块占位，后期替换为项目大图） */
+.projects-hero {
+  position: relative;
+  max-width: 1600px;
+  height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.projects-hero .box {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, #b6b6b6 0%, #dcdcdc 55%, #ececec 100%);
+}
+
+.projects-hero .projects-hero-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* 方法论描述 */
+.method-block {
+  max-width: 1200px;
+  margin: 90px auto 150px;
+}
+
+.method-block .section-label {
+  margin-bottom: 20px;
+}
+
+.method-block h3 {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  color: var(--color-accent);
+  margin-bottom: 28px;
+}
+
+.method-block p {
+  font-size: 17px;
+  line-height: 2;
+  color: #444;
+  max-width: 900px;
+  font-weight: 300;
+}
+
+/* 方法论了解更多链接 */
+.method-more {
+  margin-top: 48px;
+}
+
+.method-more .more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.method-more .more-link:hover {
+  opacity: 0.6;
+  gap: 14px;
+}
+
+.section-head {
+  max-width: 1200px;
+  margin: 60px auto 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.section-head h2 {
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.section-head .view-all {
+  font-size: 14px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.section-head .view-all:hover {
+  opacity: 0.6;
+}
+
+/* 精选项目描述 */
+.projects-desc {
+  max-width: 1200px;
+  margin: -30px auto 60px;
+  font-size: 17px;
+  line-height: 2;
+  color: #444;
+  font-weight: 300;
+}
+
+.projects-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  transition: var(--transition);
+}
+
+.project-thumb {
+  position: relative;
+  padding-top: 100%; /* 1:1 方形 */
+  overflow: hidden;
+  background: #ddd;
+}
+
+/* 色块填充占位图 */
+.project-thumb.thumb-1 { background: linear-gradient(140deg, #b0b0b0, #dcdcdc); }
+.project-thumb.thumb-2 { background: linear-gradient(140deg, #c7c7c7, #ececec); }
+.project-thumb.thumb-3 { background: linear-gradient(140deg, #9e9e9e, #cfcfcf); }
+.project-thumb.thumb-4 { background: linear-gradient(140deg, #d5d5d5, #f4f4f4); }
+.project-thumb.thumb-5 { background: linear-gradient(140deg, #bdbdbd, #dfdfdf); }
+.project-thumb.thumb-6 { background: linear-gradient(140deg, #a5a5a5, #d2d2d2); }
+
+/* 悬停时的放大效果 */
+.project-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 50%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.project-card:hover .project-thumb::before {
+  opacity: 1;
+}
+
+.project-info {
+  padding: 22px 6px 6px;
+}
+
+.project-info .name {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.project-info .cat {
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+/* 让整个卡片在悬停时有轻微上移 */
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ============ 社会承诺区块 ============ */
+.commitment-section {
+  padding: 120px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.commitment-section h3 {
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  margin-bottom: 28px;
+  color: var(--color-accent);
+}
+
+.commitment-section p {
+  font-size: 17px;
+  line-height: 2;
+  color: #444;
+  max-width: 900px;
+  font-weight: 300;
+}
+
+/* 承诺了解更多链接 */
+.commitment-more {
+  margin-top: 48px;
+}
+
+.commitment-more .more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 4px;
+  transition: var(--transition);
+}
+
+.commitment-more .more-link:hover {
+  opacity: 0.6;
+  gap: 14px;
+}
+
+/* ============ 服务/专业区域（色块） ============ */
+.services-section {
+  padding: 120px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-list {
+  border-top: 1px solid var(--color-line);
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--color-line);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.service-item .service-name {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.service-item .service-num {
+  font-family: var(--font-en);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.service-item .service-desc {
+  font-size: 13px;
+  color: var(--color-muted);
+  letter-spacing: 0.5px;
+  max-width: 60%;
+  text-align: right;
+}
+
+.service-item:hover {
+  padding-left: 16px;
+}
+
+.service-item:hover .service-name {
+  letter-spacing: 3px;
+}
+
+/* ============ 新闻区块 ============ */
+.news-section {
+  background: #f6f6f6;
+  color: var(--color-text);
+  padding: 120px 48px;
+}
+
+.news-section .section-label {
+  color: var(--color-muted);
+}
+
+.news-section .section-head h2 {
+  color: var(--color-text);
+}
+
+.news-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.news-card .news-thumb {
+  height: 220px;
+  background: #ddd;
+  margin-bottom: 20px;
+}
+
+.news-thumb.news-1 { background: linear-gradient(140deg, #c9c9c9, #eaeaea); }
+.news-thumb.news-2 { background: linear-gradient(140deg, #dbdbdb, #f0f0f0); }
+.news-thumb.news-3 { background: linear-gradient(140deg, #c2c2c2, #e6e6e6); }
+
+.news-card .date {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #888;
+}
+
+.news-card h3 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.news-card h3 a:hover {
+  opacity: 0.7;
+}
+
+/* ============ 招聘区块 ============ */
+.careers-banner {
+  padding: 100px 48px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.careers-banner h2 {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.careers-banner p {
+  margin-top: 20px;
+  color: var(--color-muted);
+  font-weight: 300;
+}
+
+.careers-banner .cta {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 14px 42px;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 13px;
+  letter-spacing: 3px;
+  transition: var(--transition);
+}
+
+.careers-banner .cta:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ============ 页脚 ============ */
+.footer {
+  background: #f0f0f0;
+  color: var(--color-text);
+  padding: 70px 48px 40px;
+}
+
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* 社交区 */
+.footer-social-bar {
+  display: flex;
+  align-items: center;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social a {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-accent);
+  transition: var(--transition);
+}
+
+.footer-social a svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* 悬停提示：平台英文名 */
+.footer-social a::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 5px 11px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  border-radius: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.footer-social a::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 5px solid transparent;
+  border-top-color: var(--color-accent);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.footer-social a:hover::after,
+.footer-social a:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.footer-social a:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* 导航网格 */
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* 工程项目列较宽，容纳两栏内容 */
+.footer-nav .footer-col:first-child {
+  grid-column: span 2;
+}
+
+.footer h4 {
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+/* 工程项目/剪纸/珠宝/服装 标题 → 黑色 */
+.footer-nav .footer-col:nth-child(-n+4) h4 {
+  color: var(--color-text);
+}
+
+/* 工程项目列表分两列，第二列后移 */
+.footer-nav .footer-col ul.ft-col-2 {
+  column-count: 2;
+  column-gap: 40px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 12px;
+}
+
+.footer ul li a {
+  color: #333;
+  font-size: 14px;
+  font-weight: 300;
+  transition: var(--transition);
+}
+
+.footer ul li a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid var(--color-line);
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-legal a {
+  color: var(--color-muted);
+  transition: var(--transition);
+}
+
+.footer-legal a:hover {
+  color: var(--color-accent);
+}
+
+.legal-divider {
+  color: var(--color-line);
+}
+
+/* ============ 移动端响应式 ============ */
+@media (max-width: 992px) {
+  .main-navigation {
+    display: none;
+  }
+
+  #header-menu {
+    display: block;
+  }
+
+  .projects-grid,
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-social {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .projects-grid,
+  .news-grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-content h1 {
+    font-size: 36px;
+  }
+
+  .about-section,
+  .projects-section,
+  .services-section,
+  .news-section,
+  .careers-banner,
+  .commitment-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer-nav {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .carousel-arrows {
+    display: none;
+  }
+}
