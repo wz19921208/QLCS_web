@@ -379,3 +379,65 @@
 ---
 
 *本文档为规划稿，具体字段与实现细节将随网页搭建进度修正。*
+
+---
+
+## 十三、上传公网方式（测试用）
+
+> 目的：把本地 `lead8-clone` 的最新站点内容同步推送至 GitHub 仓库并部署 GitHub Pages，从而获得公网访问链接。
+> 适用于**开发测试阶段**；当站点上线正式服务器后，本节不再需要。
+
+### 定位
+- **源目录**：`C:\Users\Ye\Documents\GitHub\OttoDIYLib\lead8-clone`（开发目录，含 `.git` 与否均可）
+- **部署仓库（本地克隆）**：`C:\Users\Ye\Documents\GitHub\QLCS_web`（真正的 git 仓库，含 `.git`，remote 指向 GitHub）
+- **远程仓库**：`https://github.com/wz19921208/QLCS_web.git`（GitHub Pages 由 `main` 分支根目录构建）
+- **公网链接**：`https://wz19921208.github.io/QLCS_web/`
+
+### Git 客户端路径（本机可用但不默认在 PATH）
+```
+C:\Users\Ye\.workbuddy\vendor\PortableGit\cmd\git.exe
+```
+
+### 完整上传步骤
+
+#### 第 1 步：将源目录内容镜像同步到部署仓库
+```powershell
+robocopy "C:\Users\Ye\Documents\GitHub\OttoDIYLib\lead8-clone" `
+         "C:\Users\Ye\Documents\GitHub\QLCS_web" /MIR /XD .git /NJH /NJS /NDL /NFL /NC /NS
+```
+- `/MIR` 镜像模式：覆盖更新文件，并**删除**部署仓库中源目录已不存在的文件；
+- `/XD .git`：排除部署仓库的 `.git` 目录，避免破坏 git 元数据。
+
+#### 第 2 步：提交变更
+```powershell
+$git="C:\Users\Ye\.workbuddy\vendor\PortableGit\cmd\git.exe"
+$q="C:\Users\Ye\Documents\GitHub\QLCS_web"
+& $git -C $q add -A
+& $git -C $q commit -m "<本次改动说明>"
+```
+
+#### 第 3 步：推送到远程
+```powershell
+& $git -C $q push origin main
+```
+- 成功标志：输出形如 `8c59053..deb84b8  main -> main`；
+- 注明：push 进度信息会写入 stderr，PowerShell 可能提示 "Command failed"，但只要出现 `main -> main` 即**推送成功**。
+
+#### 第 4 步：确认远程同步
+```powershell
+& $git -C $q ls-remote origin main
+# 返回的 commit 应与本地 git log -1 --oneline 的 commit 一致
+```
+
+### 验证公网链接（GitHub Pages 自动部署，约 1-2 分钟生效）
+```powershell
+$base="https://wz19921208.github.io/QLCS_web/"
+Invoke-WebRequest -Uri $base -UseBasicParsing -TimeoutSec 20   # 期望 200
+Invoke-WebRequest -Uri ($base+"paper-personal.html") -UseBasicParsing # 抽查子页
+```
+
+### 关键要点
+- 部署仓库 `QLCS_web` 必须先是一个 git 仓库（含 `.git`），否则无法 commit / push；
+- 首次若在纯新机器上，需先在 GitHub 建同仓库并 `git clone` 到本地，再执行上述同步；
+- 推送需具备该仓库的写权限与已配置的凭据（credential.helper 为 `manager`，走 Windows 凭据管理器）；
+- 改动的源是 `lead8-clone`，**以它为唯一真源**，用 robocopy 单向镜像到部署仓库，避免在部署仓库直接编辑造成混乱。
