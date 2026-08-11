@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-hans" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="青鸾传世 — 剪纸项目 · 活动7 详细展示，以五大窗口赏析整体、工艺与纹样，并带放大镜细节。"/>
+  <title>活动7 · 团建活动 | 青鸾传世</title>
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <!-- 样式 -->
+  <link rel="stylesheet" href="css/styles.css"/>
+  <!-- 餐饮项目专属样式 -->
+  <style>
+    .subpage-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+    }
+    .subpage-hero {
+      padding: 150px 48px 50px;
+      text-align: center;
+      background: linear-gradient(135deg, #eef1f4 0%, #ffffff 100%);
+    }
+    .subpage-hero .section-label { margin-bottom: 16px; }
+    .subpage-hero h1 {
+      font-size: 44px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+    }
+    .subpage-hero .sub {
+      margin-top: 20px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-muted);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 2;
+    }
+    .breadcrumb {
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+    .breadcrumb a { color: var(--color-accent); text-decoration: none; transition: var(--transition); }
+    .breadcrumb a:hover { opacity: 0.6; }
+    .breadcrumb span.divider { color: #c9c9c9; }
+    .bookstore-page-content {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+    .bookstore-lead .section-label {
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--color-accent);
+      margin-bottom: 22px;
+    }
+    .bookstore-lead p {
+      font-size: 18px;
+      line-height: 2;
+      color: #333;
+      font-weight: 300;
+      max-width: 900px;
+    }
+    .bookstore-hero-image {
+      max-width: 1600px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 48px;
+      box-sizing: border-box;
+    }
+    .bookstore-image-box {
+      width: 100%;
+      height: 760px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
+        linear-gradient(135deg, #e3c7bb, #f3e6da);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-caption {
+      color: #fff;
+      letter-spacing: 5px;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+    .bookstore-visual {
+      max-width: 1600px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 48px;
+      box-sizing: border-box;
+    }
+    .bookstore-visual-item { margin-bottom: 96px; }
+    .bookstore-visual-box {
+      width: 100%;
+      height: 760px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
+        linear-gradient(135deg, #e3c7bb, #f3e6da);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bookstore-visual-caption {
+      color: #fff;
+      letter-spacing: 5px;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+    }
+    .bookstore-visual-info {
+      max-width: 760px;
+      margin: 28px auto 0;
+      text-align: center;
+    }
+    .bookstore-visual-info h4 {
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+    .bookstore-visual-info p {
+      font-size: 16px;
+      line-height: 2;
+      color: #555;
+      font-weight: 300;
+    }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 60px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      border-bottom: 1px solid var(--color-accent);
+      padding-bottom: 4px;
+      transition: var(--transition);
+    }
+    .back-home:hover { opacity: 0.6; gap: 14px; }
+    /* 详情 5 大窗口 + hover 放大镜效果 */
+    .collection-detail-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 90px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .collection-detail-item { position: relative; overflow: hidden; cursor: zoom-in; }
+    .collection-detail-item:first-child { grid-column: 1 / -1; height: 620px; }
+    .collection-detail-item:not(:first-child) { height: 440px; }
+    .collection-detail-media {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-en);
+      color: #fff;
+      letter-spacing: 3px;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      transition: transform 0.9s ease;
+      transform-origin: center;
+      background: linear-gradient(135deg, #e3c7bb, #f3e6da);
+    }
+    .collection-detail-item:nth-child(2) .collection-detail-media { background: linear-gradient(160deg,#d9b9ab,#efddcf); }
+    .collection-detail-item:nth-child(3) .collection-detail-media { background: linear-gradient(160deg,#cfa99a,#e8cdbf); }
+    .collection-detail-item:nth-child(4) .collection-detail-media { background: linear-gradient(160deg,#e3c7bb,#efe3d5); }
+    .collection-detail-item:nth-child(5) .collection-detail-media { background: linear-gradient(160deg,#d0ad9c,#ecdbcc); }
+    .collection-detail-item:hover .collection-detail-media { transform: scale(1.18); }
+    .collection-detail-caption {
+      position: absolute; left: 22px; bottom: 18px; z-index: 2;
+      color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+    .collection-detail-caption h4 { font-size: 18px; font-weight: 400; letter-spacing: 1px; margin-bottom: 4px; }
+    .collection-detail-caption p { font-size: 13px; letter-spacing: 1px; opacity: 0.9; }
+    @media (max-width: 992px) { .collection-detail-item:first-child { height: 460px; } }
+    @media (max-width: 576px) {
+      .collection-detail-grid { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 20px; }
+      .collection-detail-item:first-child,
+      .collection-detail-item:not(:first-child) { height: 320px; }
+    }
+    /* 服务分类网格小窗口 */
+    .collection-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 70px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .collection-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.14), transparent 50%),
+        linear-gradient(135deg, #e3c7bb, #f3e6da);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .collection-item:nth-child(2n) { background: linear-gradient(160deg, #d9b9ab, #efddcf); }
+    .collection-item:nth-child(3n) { background: linear-gradient(160deg, #cfa99a, #e8cdbf); }
+    .collection-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+    .collection-item span {
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      transition: transform 0.5s ease, letter-spacing 0.5s ease;
+    }
+    .collection-item:hover span { letter-spacing: 5px; }
+    @media (max-width: 992px) {
+      .collection-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 576px) {
+      .collection-grid { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 14px; }
+      .collection-item { aspect-ratio: 4 / 3; }
+    }
+    @media (max-width: 576px) {
+      .subpage-hero { padding: 150px 20px 60px; }
+      .subpage-hero h1 { font-size: 32px; }
+      .bookstore-page-content { padding: 60px 20px; }
+      .bookstore-hero-image { padding: 0 20px; }
+      .bookstore-image-box { height: 480px; }
+      .bookstore-visual { padding: 0 20px; }
+      .bookstore-visual-box { height: 480px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ 加载动画遮罩 ============ -->
+  <div id="loading-overlay">
+    <div id="loading-overlay-content">
+      <div class="loading-logo">青鸾传世</div>
+      <div class="loading-bar"><span></span></div>
+    </div>
+  </div>
+  <!-- ============ 页头 ============ -->
+  <header class="header navbar subpage-header" id="header" role="banner">
+    <a href="index.html" title="Home" rel="home">
+      <div id="logo">青鸾传世</div>
+    </a>
+    <div class="main-navigation">
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="projects.html" class="underline-link">工程项目</a></li>
+          <li><a href="papercraft.html" class="underline-link active">剪纸项目</a></li>
+          <li><a href="jewelry.html" class="underline-link">珠宝项目</a></li>
+          <li><a href="fashion.html" class="underline-link">服装项目</a></li>
+          <li><a href="games.html" class="underline-link">游戏</a></li>
+          <li><a href="index.html#news" class="underline-link">最新消息</a></li>
+          <li><a href="story.html" class="underline-link">工作室</a></li>
+          <li><a href="index.html#contact" class="underline-link">联系</a></li>
+        </ul>
+      </nav>
+      <div class="language-switcher" role="navigation">
+        <a href="#" data-lang="en">EN</a>
+        <a href="#" data-lang="zh-hans" class="active">简</a>
+        <a href="#" data-lang="zh-hant">繁</a>
+      </div>
+    </div>
+    <a id="header-menu" href="javascript:void(0);" aria-label="Menu">
+      <div class="menu-icon"><span></span><span style="width: 60%;"></span><span></span></div>
+    </a>
+  </header>
+  <!-- ============ 餐饮项目横幅 ============ -->
+  <section class="subpage-hero">
+    <div class="breadcrumb">
+      <a href="papercraft.html">剪纸项目</a>
+      <span class="divider">/</span>
+      <span>活动7</span>
+    </div>
+    <div class="section-label">Team Building</div>
+    <h1>活动7</h1>
+    <p class="sub">
+      以剪纸为主题的企业团建体验，在共创与协作中传递文化温度，凝聚团队情感与归属感。
+    </p>
+  </section>
+  <!-- ============ 首屏大图接口（图片占位，后期替换为餐饮实景图） ============ -->
+    <!-- 详情五大窗口 -->
+  <section class="collection-detail-grid">
+    <div class="collection-detail-item"><div class="collection-detail-media">Overall &middot; 整体赏析</div><div class="collection-detail-caption"><h4>整体赏析</h4><p>活动7 的整体风貌与第一印象</p></div></div>
+    <div class="collection-detail-item"><div class="collection-detail-media">Craft &middot; 工艺细节</div><div class="collection-detail-caption"><h4>工艺细节</h4><p>刀工与剪法的精微之处</p></div></div>
+    <div class="collection-detail-item"><div class="collection-detail-media">Motif &middot; 纹样特写</div><div class="collection-detail-caption"><h4>纹样特写</h4><p>图案纹样的局部放大</p></div></div>
+    <div class="collection-detail-item"><div class="collection-detail-media">Texture &middot; 材质质感</div><div class="collection-detail-caption"><h4>材质质感</h4><p>纸、色与光影的层次</p></div></div>
+    <div class="collection-detail-item"><div class="collection-detail-media">Finish &middot; 匠心呈现</div><div class="collection-detail-caption"><h4>匠心呈现</h4><p>装裱与最终完成形态</p></div></div>
+  </section>
+  <!-- ============ 餐饮项目内容 ============ -->
+  <section class="bookstore-page-content">
+    <div class="bookstore-lead">
+      <div class="section-label">Collection 7</div>
+      <p>
+        剪纸团建是一段共创与凝聚的旅程。我们在专业匠人的引导下，让团队成员动手剪出属于自己的作品，在交流与协作中感受传统艺术的温度，从而加深彼此的联结与对文化的认同。
+      </p>
+    </div>
+  </section>
+  <!-- ============ 返回链接 ============ -->
+  <section class="bookstore-page-content">
+    <a class="back-home" href="paper-teamwork.html">返回团建活动 →</a>
+  </section>
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-social-bar">
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          <a href="#" aria-label="Instagram" data-tip="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.162 12 18.162s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zM12 16c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>工程项目</h4>
+          <ul class="ft-col-2">
+            <li><a href="bookstore.html">书局类</a></li>
+            <li><a href="dining.html">餐饮类</a></li>
+            <li><a href="club.html">会所类</a></li>
+            <li><a href="teahouse.html">茶室类</a></li>
+            <li><a href="bar.html">酒吧类</a></li>
+            <li><a href="fitness.html">健身类</a></li>
+            <li><a href="yoga.html">瑜伽类</a></li>
+            <li><a href="dance.html">舞蹈类</a></li>
+            <li><a href="exhibition.html">展厅类</a></li>
+            <li><a href="residence.html">住宅类</a></li>
+            <li><a href="small-project.html">小型项目</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>剪纸项目</h4>
+          <ul>
+            <li><a href="paper-personal.html">个人收藏</a></li>
+            <li><a href="paper-corporate.html">企业订单</a></li>
+            <li><a href="paper-teamwork.html">团建活动</a></li>
+            <li><a href="paper-government.html">政府活动</a></li>
+            <li><a href="paper-pattern.html">图案定制</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>珠宝项目</h4>
+          <ul>
+            <li><a href="jewelry-necklace.html">项链系列</a></li>
+            <li><a href="jewelry-bracelet.html">手链系列</a></li>
+            <li><a href="jewelry-ring.html">戒指系列</a></li>
+            <li><a href="jewelry-earring.html">耳环系列</a></li>
+            <li><a href="jewelry-herbal.html">中药定制</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>服装项目</h4>
+          <ul>
+            <li><a href="fashion-top.html">上衣系列</a></li>
+            <li><a href="fashion-skirt.html">裙子系列</a></li>
+            <li><a href="fashion-dress.html">裙装系列</a></li>
+            <li><a href="fashion-suit.html">套装系列</a></li>
+            <li><a href="fashion-custom.html">私人定制</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="#">新闻稿</a></li>
+            <li><a href="#">活动</a></li>
+            <li><a href="#">创新思维</a></li>
+            <li><a href="#">媒体</a></li>
+            <li><a href="#">企业社会责任</a></li>
+            <li><a href="#">奖项</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>工作室</h4>
+          <ul>
+            <li><a href="story.html">我们的故事</a></li>
+            <li><a href="team-members.html">我们的团队</a></li>
+            <li><a href="#">我们的项目</a></li>
+            <li><a href="approach.html">方法论</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系</h4>
+          <ul>
+            <li><a href="#">上海办公室</a></li>
+            <li><a href="#">就业机会</a></li>
+            <li><a href="#">人才计划</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 青鸾传世</span>
+      <div class="footer-legal">
+        <a href="#">使用条款</a>
+        <span class="legal-divider">|</span>
+        <a href="#">私隐政策</a>
+      </div>
+    </div>
+  </footer>
+  <!-- ============ 脚本 ============ -->
+  <script src="js/script.js"></script>
+</body>
+</html>
