@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-hans" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="青鸾传世 — 书局项目，以阅读为核心的空间叙事，在书香与光影之间营造静谧而富有层次的文化场所。"/>
+  <meta name="description" content="青鸾传世 — 书店项目，以阅读为核心的空间叙事，覆盖入口门厅、阅读大厅、儿童区、文创区等多种书店空间类型。"/>
   <title>书局项目 | 青鸾传世</title>
 
   <!-- 字体 -->
@@ -16,16 +16,14 @@
 
   <!-- 书局项目专属样式 -->
   <style>
-    /* ===== 次级页面页头（已滚动状态） ===== */
     .subpage-header {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
       box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
     }
 
-    /* ===== 次级页面横幅 ===== */
     .subpage-hero {
-      padding: 180px 48px 80px;
+      padding: 150px 48px 50px;
       text-align: center;
       background: linear-gradient(135deg, #eef1f4 0%, #ffffff 100%);
     }
@@ -50,7 +48,6 @@
       line-height: 2;
     }
 
-    /* ===== 面包屑 ===== */
     .breadcrumb {
       display: inline-flex;
       gap: 8px;
@@ -64,114 +61,15 @@
     .breadcrumb a:hover { opacity: 0.6; }
     .breadcrumb span.divider { color: #c9c9c9; }
 
-    /* ===== 书局项目内容 ===== */
     .bookstore-page-content {
       max-width: 1080px;
       margin: 0 auto;
       padding: 80px 48px;
     }
 
-    .bookstore-lead .section-label {
-      font-size: 22px;
-      letter-spacing: 3px;
-      color: var(--color-accent);
-      margin-bottom: 22px;
-    }
+    .bookstore-lead .section-label { font-size: 22px; letter-spacing: 3px; color: var(--color-accent); margin-bottom: 22px; }
+    .bookstore-lead p { font-size: 18px; line-height: 2; color: #333; font-weight: 300; max-width: 900px; }
 
-    .bookstore-lead p {
-      font-size: 18px;
-      line-height: 2;
-      color: #333;
-      font-weight: 300;
-      max-width: 900px;
-    }
-
-    /* ===== 首屏大图接口（图片占位） ===== */
-    .bookstore-hero-image {
-      max-width: 1600px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 48px;
-      box-sizing: border-box;
-    }
-
-    .bookstore-image-box {
-      width: 100%;
-      height: 760px;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
-        linear-gradient(135deg, #c2b9a8, #eae5db);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-caption {
-      color: #fff;
-      letter-spacing: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-    }
-
-    /* ===== 书局大图窗口（与首屏大图同尺寸） ===== */
-    .bookstore-visual {
-      max-width: 1600px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 48px;
-      box-sizing: border-box;
-    }
-
-    .bookstore-visual-item {
-      margin-bottom: 96px;
-    }
-
-    .bookstore-visual-box {
-      width: 100%;
-      height: 760px;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
-        linear-gradient(135deg, #c2b9a8, #eae5db);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bookstore-visual-caption {
-      color: #fff;
-      letter-spacing: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-    }
-
-    .bookstore-visual-info {
-      max-width: 760px;
-      margin: 28px auto 0;
-      text-align: center;
-    }
-
-    .bookstore-visual-info h4 {
-      font-size: 22px;
-      font-weight: 300;
-      letter-spacing: 2px;
-      color: var(--color-accent);
-      margin-bottom: 14px;
-    }
-
-    .bookstore-visual-info p {
-      font-size: 16px;
-      line-height: 2;
-      color: #555;
-      font-weight: 300;
-    }
-
-    /* ===== 返回链接 ===== */
     .back-home {
       display: inline-flex;
       align-items: center;
@@ -184,18 +82,59 @@
       padding-bottom: 4px;
       transition: var(--transition);
     }
-
     .back-home:hover { opacity: 0.6; gap: 14px; }
 
-    /* 响应式 */
+    /* 书局空间 8 格小窗口网格 */
+    .collection-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 70px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .collection-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.14), transparent 50%),
+        linear-gradient(135deg, #c2b9a8, #eae5db);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .collection-item:nth-child(2n) { background: linear-gradient(160deg, #b7ad9b, #ddd5c8); }
+    .collection-item:nth-child(3n) { background: linear-gradient(160deg, #a99f8c, #cfc6b6); }
+
+    .collection-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    .collection-item span {
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      transition: transform 0.5s ease, letter-spacing 0.5s ease;
+    }
+
+    .collection-item:hover span { letter-spacing: 5px; }
+
+    @media (max-width: 992px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 576px) {
       .subpage-hero { padding: 150px 20px 60px; }
       .subpage-hero h1 { font-size: 32px; }
       .bookstore-page-content { padding: 60px 20px; }
-      .bookstore-hero-image { padding: 0 20px; }
-      .bookstore-image-box { height: 480px; }
-      .bookstore-visual { padding: 0 20px; }
-      .bookstore-visual-box { height: 480px; }
+      .collection-grid { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 14px; }
+      .collection-item { aspect-ratio: 4 / 3; }
     }
   </style>
 </head>
@@ -211,10 +150,7 @@
 
   <!-- ============ 页头 ============ -->
   <header class="header navbar subpage-header" id="header" role="banner">
-    <a href="index.html" title="Home" rel="home">
-      <div id="logo">青鸾传世</div>
-    </a>
-
+    <a href="index.html" title="Home" rel="home"><div id="logo">青鸾传世</div></a>
     <div class="main-navigation">
       <nav role="navigation" aria-label="Main navigation">
         <ul>
@@ -223,25 +159,19 @@
           <li><a href="jewelry.html" class="underline-link">珠宝项目</a></li>
           <li><a href="fashion.html" class="underline-link">服装项目</a></li>
           <li><a href="games.html" class="underline-link">游戏</a></li>
-          <li><a href="index.html#news" class="underline-link">最新消息</a></li>
-          <li><a href="story.html" class="underline-link">工作室</a></li>
-          <li><a href="index.html#contact" class="underline-link">联系</a></li>
+          <li><a href="news.html" class="underline-link">最新消息</a></li>
+          <li><a href="studio.html" class="underline-link">工作室</a></li>
+          <li><a href="contact.html" class="underline-link">联系</a></li>
         </ul>
       </nav>
-
       <div class="language-switcher" role="navigation">
         <a href="#" data-lang="en">EN</a>
         <a href="#" data-lang="zh-hans" class="active">简</a>
-        <a href="#" data-lang="zh-hant">繁</a>
+        
       </div>
     </div>
-
     <a id="header-menu" href="javascript:void(0);" aria-label="Menu">
-      <div class="menu-icon">
-        <span></span>
-        <span style="width: 60%;"></span>
-        <span></span>
-      </div>
+      <div class="menu-icon"><span></span><span style="width: 60%;"></span><span></span></div>
     </a>
   </header>
 
@@ -252,52 +182,32 @@
       <span class="divider">/</span>
       <span>书局项目</span>
     </div>
-    <div class="section-label">Bookstore Projects</div>
+    <div class="section-label">Bookstore Design</div>
     <h1>书局项目</h1>
     <p class="sub">
       以阅读为核心的空间叙事，在书香与光影之间营造静谧而富有层次的文化场所，让每一位读者都能在空间中寻得精神的安放。
     </p>
   </section>
 
-  <!-- ============ 首屏大图接口（图片占位，后期替换为书局实景图） ============ -->
-  <section class="bookstore-hero-image">
-    <div class="bookstore-image-box">
-      <span class="image-caption">Bookstore · 书局空间</span>
-    </div>
+  <!-- ============ 书局空间 8 格小窗口 ============ -->
+  <section class="collection-grid" id="series">
+    <a href="bookstore-1.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-1.png'); background-size:cover; background-position:center;"><span>书局1</span></a>
+    <a href="bookstore-2.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-2.png'); background-size:cover; background-position:center;"><span>书局2</span></a>
+    <a href="bookstore-3.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-3.png'); background-size:cover; background-position:center;"><span>书局3</span></a>
+    <a href="bookstore-4.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-4.png'); background-size:cover; background-position:center;"><span>书局4</span></a>
+    <a href="bookstore-5.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-5.png'); background-size:cover; background-position:center;"><span>书局5</span></a>
+    <a href="bookstore-6.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-6.png'); background-size:cover; background-position:center;"><span>书局6</span></a>
+    <a href="bookstore-7.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-7.png'); background-size:cover; background-position:center;"><span>书局7</span></a>
+    <a href="bookstore-8.html" class="collection-item" style="background-image:url('img/工程项目/书局/工程项目-书局-8.png'); background-size:cover; background-position:center;"><span>书局8</span></a>
   </section>
 
   <!-- ============ 书局项目内容 ============ -->
   <section class="bookstore-page-content">
-
-    <!-- 引言 -->
     <div class="bookstore-lead">
       <div class="section-label">Bookstore Design</div>
       <p>
-        书局不止是藏书之所，更是城市人文的精神栖居地。我们以阅读行为与人的动线为核心，考量采光、声场与材质，在书架、座位与光影之间建立静谧而富有层次的空间秩序，使书店成为可停留、可阅读、可交流的文化容器。
+        书局不止是藏书之所，更是城市人文的精神栖居地。我们以阅读行为与人的动线为核心，协调光线、声场与材质，在书架、座位与光影之间建立静谧而富有层次的空间秩序，使书店成为可停留、可阅读、可交流的文化容器。
       </p>
-    </div>
-  </section>
-
-  <!-- ============ 书局大图窗口（与首屏大图同尺寸，全宽） ============ -->
-  <section class="bookstore-visual">
-    <div class="bookstore-visual-item">
-      <div class="bookstore-visual-box">
-        <span class="bookstore-visual-caption">Reading Space · 阅读空间</span>
-      </div>
-      <div class="bookstore-visual-info">
-        <h4>光影与阅读</h4>
-        <p>以自然采光与暖色人工光营造书香氛围，让光线成为阅读体验的一部分。</p>
-      </div>
-    </div>
-
-    <div class="bookstore-visual-item">
-      <div class="bookstore-visual-box">
-        <span class="bookstore-visual-caption">Culture · 人文场域</span>
-      </div>
-      <div class="bookstore-visual-info">
-        <h4>复合业态</h4>
-        <p>融合阅读、文创、咖啡茶座等功能，延展书局的人文价值与商业活力。</p>
-      </div>
     </div>
   </section>
 
@@ -335,72 +245,34 @@
         </div>
         <div class="footer-col">
           <h4>剪纸项目</h4>
-          <ul>
-            <li><a href="paper-personal.html">个人收藏</a></li>
-            <li><a href="paper-corporate.html">企业订单</a></li>
-            <li><a href="paper-teamwork.html">团建活动</a></li>
-            <li><a href="paper-government.html">政府活动</a></li>
-            <li><a href="paper-pattern.html">图案定制</a></li>
-          </ul>
+          <ul><li><a href="paper-personal.html">个人收藏</a></li><li><a href="paper-corporate.html">企业订单</a></li><li><a href="paper-teamwork.html">团建活动</a></li><li><a href="paper-government.html">政府活动</a></li><li><a href="paper-pattern.html">图案定制</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>珠宝项目</h4>
-          <ul>
-            <li><a href="jewelry-necklace.html">项链系列</a></li>
-            <li><a href="jewelry-bracelet.html">手链系列</a></li>
-            <li><a href="jewelry-ring.html">戒指系列</a></li>
-            <li><a href="jewelry-earring.html">耳环系列</a></li>
-            <li><a href="jewelry-herbal.html">中药定制</a></li>
-          </ul>
+          <ul><li><a href="jewelry-necklace.html">项链系列</a></li><li><a href="jewelry-bracelet.html">手链系列</a></li><li><a href="jewelry-ring.html">戒指系列</a></li><li><a href="jewelry-earring.html">耳环系列</a></li><li><a href="jewelry-herbal.html">中药定制</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>服装项目</h4>
-          <ul>
-            <li><a href="fashion-top.html">上衣系列</a></li>
-            <li><a href="fashion-skirt.html">裙子系列</a></li>
-            <li><a href="fashion-dress.html">裙装系列</a></li>
-            <li><a href="fashion-suit.html">套装系列</a></li>
-            <li><a href="fashion-custom.html">私人定制</a></li>
-          </ul>
+          <ul><li><a href="fashion-top.html">上衣系列</a></li><li><a href="fashion-skirt.html">裙子系列</a></li><li><a href="fashion-dress.html">裙装系列</a></li><li><a href="fashion-suit.html">套装系列</a></li><li><a href="fashion-custom.html">私人定制</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>最新消息</h4>
-          <ul>
-            <li><a href="#">新闻稿</a></li>
-            <li><a href="#">活动</a></li>
-            <li><a href="#">创新思维</a></li>
-            <li><a href="#">媒体</a></li>
-            <li><a href="#">企业社会责任</a></li>
-            <li><a href="#">奖项</a></li>
-          </ul>
+          <ul><li><a href="activities.html">活动</a></li><li><a href="awards.html">奖项</a></li><li><a href="press.html">新闻稿</a></li><li><a href="csr.html">企业社会责任</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>工作室</h4>
-          <ul>
-            <li><a href="story.html">我们的故事</a></li>
-            <li><a href="team-members.html">我们的团队</a></li>
-            <li><a href="#">我们的项目</a></li>
-            <li><a href="approach.html">方法论</a></li>
-          </ul>
+          <ul><li><a href="story.html">我们的故事</a></li><li><a href="team-members.html">我们的团队</a></li><li><a href="projects.html">我们的项目</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>联系</h4>
-          <ul>
-            <li><a href="#">上海办公室</a></li>
-            <li><a href="#">就业机会</a></li>
-            <li><a href="#">人才计划</a></li>
-          </ul>
+          <ul><li><a href="contact-us.html">联系我们</a></li><li><a href="careers.html">人才计划</a></li></ul>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>© 2024 青鸾传世</span>
-      <div class="footer-legal">
-        <a href="#">使用条款</a>
-        <span class="legal-divider">|</span>
-        <a href="#">私隐政策</a>
-      </div>
+      <div class="footer-legal"><a href="#">使用条款</a><span class="legal-divider">|</span><a href="#">私隐政策</a></div>
     </div>
   </footer>
 

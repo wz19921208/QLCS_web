@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-hans" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
@@ -14,6 +14,33 @@
 
   <!-- 样式 -->
   <link rel="stylesheet" href="css/styles.css"/>
+
+  <!-- 首页轮播真实图片样式 -->
+  <style>
+    .slide-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-media::before,
+    .slide-media::after {
+      display: none;
+    }
+    /* 首页导航栏：始终可见，不被轮播图吃掉，并以底线与轮播图分隔 */
+    .home .header,
+    #home .header,
+    header#header {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-line);
+    }
+    /* 导航项文字下方留白向上收紧半个字，更精致 */
+    .main-navigation nav > ul li a {
+      padding-top: 8px;
+      padding-bottom: 4px;
+    }
+  </style>
 </head>
 <body>
 
@@ -42,9 +69,9 @@
           <li><a href="jewelry.html" data-hover="珠宝项目" class="underline-link">珠宝项目</a></li>
           <li><a href="fashion.html" data-hover="服装项目" class="underline-link">服装项目</a></li>
           <li><a href="games.html" data-hover="游戏" class="underline-link">游戏</a></li>
-          <li><a href="#news" data-hover="最新消息" class="underline-link">最新消息</a></li>
-          <li><a href="story.html" data-hover="工作室" class="underline-link">工作室</a></li>
-          <li><a href="#contact" data-hover="联系" class="underline-link">联系</a></li>
+          <li><a href="news.html" data-hover="最新消息" class="underline-link">最新消息</a></li>
+          <li><a href="studio.html" data-hover="工作室" class="underline-link">工作室</a></li>
+          <li><a href="contact.html" data-hover="联系" class="underline-link">联系</a></li>
         </ul>
       </nav>
 
@@ -52,7 +79,7 @@
       <div class="language-switcher" role="navigation">
         <a href="#" data-lang="en">EN</a>
         <a href="#" data-lang="zh-hans" class="active">简</a>
-        <a href="#" data-lang="zh-hant">繁</a>
+        
       </div>
     </div>
 
@@ -72,46 +99,22 @@
 
       <!-- 幻灯片 1 -->
       <div class="slide active">
-        <div class="slide-media c1"></div>
-        <div class="slide-content">
-          <div class="eyebrow">Architecture · Interior · Branding</div>
-          <h1>国际设计工作室<br/>Architecture &amp; Design Lab</h1>
-          <p class="sub">融合建筑、室内、品牌与平面设计的创意设计工作室，为全球项目提供一体化设计解决方案。</p>
-          <a class="cta" href="#projects">查看项目</a>
-        </div>
+        <div class="slide-media"><img src="img/首页/首页-1.png" alt="青鸾传世 首页视觉一"/></div>
       </div>
 
       <!-- 幻灯片 2 -->
       <div class="slide">
-        <div class="slide-media c2"></div>
-        <div class="slide-content">
-          <div class="eyebrow">Our Expertise</div>
-          <h1>专业设计服务</h1>
-          <p class="sub">从概念到落地，我们以专业的跨领域能力，创造具有影响力的空间与体验。</p>
-          <a class="cta" href="#services">了解专业</a>
-        </div>
+        <div class="slide-media"><img src="img/首页/首页-2.png" alt="青鸾传世 首页视觉二"/></div>
       </div>
 
       <!-- 幻灯片 3 -->
       <div class="slide">
-        <div class="slide-media c3"></div>
-        <div class="slide-content">
-          <div class="eyebrow">Featured Projects</div>
-          <h1>全球精选项目</h1>
-          <p class="sub">屡获殊荣的设计实践，遍布世界各地的代表性作品。</p>
-          <a class="cta" href="#projects">浏览作品</a>
-        </div>
+        <div class="slide-media"><img src="img/首页/首页-3.png" alt="青鸾传世 首页视觉三"/></div>
       </div>
 
       <!-- 幻灯片 4 -->
       <div class="slide">
-        <div class="slide-media c4"></div>
-        <div class="slide-content">
-          <div class="eyebrow">Join Our Studio</div>
-          <h1>加入我们</h1>
-          <p class="sub">与来自世界各地的设计师一同创造未来。我们期待你的加入。</p>
-          <a class="cta" href="#careers">工作机会</a>
-        </div>
+        <div class="slide-media"><img src="img/首页/首页-4.png" alt="青鸾传世 首页视觉四"/></div>
       </div>
     </div>
 
@@ -161,7 +164,7 @@
   <section id="projects" class="projects-section">
     <!-- 项目主视觉大图（色块占位，后期替换为项目大图） -->
     <div class="projects-hero">
-      <div class="box"></div>
+      <div class="box" style="background-image:url('img/首页/首页-特点项目.png'); background-size:cover; background-position:center;"></div>
       <div class="projects-hero-caption">Featured Projects</div>
     </div>
 
@@ -188,8 +191,7 @@
     </p>
 
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-thumb thumb-1"></div>
+      <div class="project-card"><div class="project-thumb thumb-1" style="background-image:url('img/首页/首页-综合商业综合体.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">综合商业综合体</div>
           <div class="cat">Commercial · Retail</div>
@@ -197,7 +199,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb thumb-2"></div>
+        <div class="project-thumb thumb-2" style="background-image:url('img/首页/首页-高端酒店与度假村.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">高端酒店与度假村</div>
           <div class="cat">Hospitality</div>
@@ -205,7 +207,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb thumb-3"></div>
+        <div class="project-thumb thumb-3" style="background-image:url('img/首页/首页-文化地标建筑.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">文化地标建筑</div>
           <div class="cat">Cultural · Public</div>
@@ -213,7 +215,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb thumb-4"></div>
+        <div class="project-thumb thumb-4" style="background-image:url('img/首页/首页-城市更新规划.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">城市更新规划</div>
           <div class="cat">Urban Regeneration</div>
@@ -221,7 +223,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb thumb-5"></div>
+        <div class="project-thumb thumb-5" style="background-image:url('img/首页/首页-总部办公空间.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">总部办公空间</div>
           <div class="cat">Workplace · Office</div>
@@ -229,7 +231,7 @@
       </div>
 
       <div class="project-card">
-        <div class="project-thumb thumb-6"></div>
+        <div class="project-thumb thumb-6" style="background-image:url('img/首页/首页-主题娱乐体验馆.png'); background-size:cover; background-position:center;"></div>
         <div class="project-info">
           <div class="name">主题娱乐体验馆</div>
           <div class="cat">Entertainment</div>
@@ -262,19 +264,19 @@
 
     <div class="news-grid">
       <div class="news-card">
-        <div class="news-thumb news-1"></div>
+        <div class="news-thumb news-1" style="background-image:url('img/首页/首页-全球设计大奖.png'); background-size:cover; background-position:center;"></div>
         <div class="date">2024.05.12</div>
-        <h3><a href="#">青鸾传世 荣获 2024 年度全球设计大奖</a></h3>
+        <h3><a href="news.html">青鸾传世 荣获 2024 年度全球设计大奖</a></h3>
       </div>
       <div class="news-card">
-        <div class="news-thumb news-2"></div>
+        <div class="news-thumb news-2" style="background-image:url('img/首页/首页-城市未来空间.png'); background-size:cover; background-position:center;"></div>
         <div class="date">2024.04.28</div>
-        <h3><a href="#">全新项目愿景发布 — 城市未来空间</a></h3>
+        <h3><a href="news.html">全新项目愿景发布 — 城市未来空间</a></h3>
       </div>
       <div class="news-card">
-        <div class="news-thumb news-3"></div>
+        <div class="news-thumb news-3" style="background-image:url('img/首页/首页-新成员加入.png'); background-size:cover; background-position:center;"></div>
         <div class="date">2024.03.15</div>
-        <h3><a href="#">工作室扩建，欢迎新成员加入</a></h3>
+        <h3><a href="news.html">工作室扩建，欢迎新成员加入</a></h3>
       </div>
     </div>
   </section>
@@ -350,15 +352,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>最新消息</h4>
-          <ul>
-            <li><a href="#">新闻稿</a></li>
-            <li><a href="#">活动</a></li>
-            <li><a href="#">创新思维</a></li>
-            <li><a href="#">媒体</a></li>
-            <li><a href="#">企业社会责任</a></li>
-            <li><a href="#">奖项</a></li>
-          </ul>
+          <h4>最新消息</h4><ul><li><a href="activities.html">活动</a></li><li><a href="awards.html">奖项</a></li><li><a href="press.html">新闻稿</a></li><li><a href="csr.html">企业社会责任</a></li></ul>
         </div>
 
         <div class="footer-col">
@@ -366,17 +360,15 @@
           <ul>
             <li><a href="story.html">我们的故事</a></li>
             <li><a href="team-members.html">我们的团队</a></li>
-            <li><a href="#">我们的项目</a></li>
-            <li><a href="approach.html">方法论</a></li>
+            <li><a href="projects.html">我们的项目</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>联系</h4>
           <ul>
-            <li><a href="#">上海办公室</a></li>
-            <li><a href="#">就业机会</a></li>
-            <li><a href="#">人才计划</a></li>
+            <li><a href="contact-us.html">联系我们</a></li>
+            <li><a href="careers.html">人才计划</a></li>
           </ul>
         </div>
 

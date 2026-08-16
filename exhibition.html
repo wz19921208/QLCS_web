@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-hans" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
@@ -14,7 +14,7 @@
   <!-- 样式 -->
   <link rel="stylesheet" href="css/styles.css"/>
 
-  <!-- 项目专属样式 -->
+  <!-- 分类页专属样式 -->
   <style>
     .subpage-header {
       background: rgba(255, 255, 255, 0.95);
@@ -23,7 +23,7 @@
     }
 
     .subpage-hero {
-      padding: 180px 48px 80px;
+      padding: 150px 48px 50px;
       text-align: center;
       background: linear-gradient(135deg, #eef1f4 0%, #ffffff 100%);
     }
@@ -67,101 +67,8 @@
       padding: 80px 48px;
     }
 
-    .bookstore-lead .section-label {
-      font-size: 22px;
-      letter-spacing: 3px;
-      color: var(--color-accent);
-      margin-bottom: 22px;
-    }
-
-    .bookstore-lead p {
-      font-size: 18px;
-      line-height: 2;
-      color: #333;
-      font-weight: 300;
-      max-width: 900px;
-    }
-
-    .bookstore-hero-image {
-      max-width: 1600px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 48px;
-      box-sizing: border-box;
-    }
-
-    .bookstore-image-box {
-      width: 100%;
-      height: 760px;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
-        linear-gradient(135deg, #c2b9a8, #eae5db);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-caption {
-      color: #fff;
-      letter-spacing: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-    }
-
-    .bookstore-visual {
-      max-width: 1600px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 48px;
-      box-sizing: border-box;
-    }
-
-    .bookstore-visual-item { margin-bottom: 96px; }
-
-    .bookstore-visual-box {
-      width: 100%;
-      height: 760px;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.18), transparent 45%),
-        linear-gradient(135deg, #c2b9a8, #eae5db);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bookstore-visual-caption {
-      color: #fff;
-      letter-spacing: 5px;
-      font-size: 15px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-    }
-
-    .bookstore-visual-info {
-      max-width: 760px;
-      margin: 28px auto 0;
-      text-align: center;
-    }
-
-    .bookstore-visual-info h4 {
-      font-size: 22px;
-      font-weight: 300;
-      letter-spacing: 2px;
-      color: var(--color-accent);
-      margin-bottom: 14px;
-    }
-
-    .bookstore-visual-info p {
-      font-size: 16px;
-      line-height: 2;
-      color: #555;
-      font-weight: 300;
-    }
+    .bookstore-lead .section-label { font-size: 22px; letter-spacing: 3px; color: var(--color-accent); margin-bottom: 22px; }
+    .bookstore-lead p { font-size: 18px; line-height: 2; color: #333; font-weight: 300; max-width: 900px; }
 
     .back-home {
       display: inline-flex;
@@ -175,17 +82,59 @@
       padding-bottom: 4px;
       transition: var(--transition);
     }
-
     .back-home:hover { opacity: 0.6; gap: 14px; }
 
+    /* 8 格小窗口网格 */
+    .collection-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 70px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .collection-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.14), transparent 50%),
+        linear-gradient(135deg, #c2b9a8, #eae5db);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .collection-item:nth-child(2n) { background: linear-gradient(160deg, #b7ad9b, #ddd5c8); }
+    .collection-item:nth-child(3n) { background: linear-gradient(160deg, #a99f8c, #cfc6b6); }
+
+    .collection-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    .collection-item span {
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      transition: transform 0.5s ease, letter-spacing 0.5s ease;
+    }
+
+    .collection-item:hover span { letter-spacing: 5px; }
+
+    @media (max-width: 992px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 576px) {
       .subpage-hero { padding: 150px 20px 60px; }
       .subpage-hero h1 { font-size: 32px; }
       .bookstore-page-content { padding: 60px 20px; }
-      .bookstore-hero-image { padding: 0 20px; }
-      .bookstore-image-box { height: 480px; }
-      .bookstore-visual { padding: 0 20px; }
-      .bookstore-visual-box { height: 480px; }
+      .collection-grid { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 14px; }
+      .collection-item { aspect-ratio: 4 / 3; }
     }
   </style>
 </head>
@@ -201,9 +150,7 @@
 
   <!-- ============ 页头 ============ -->
   <header class="header navbar subpage-header" id="header" role="banner">
-    <a href="index.html" title="Home" rel="home">
-      <div id="logo">青鸾传世</div>
-    </a>
+    <a href="index.html" title="Home" rel="home"><div id="logo">青鸾传世</div></a>
     <div class="main-navigation">
       <nav role="navigation" aria-label="Main navigation">
         <ul>
@@ -212,15 +159,15 @@
           <li><a href="jewelry.html" class="underline-link">珠宝项目</a></li>
           <li><a href="fashion.html" class="underline-link">服装项目</a></li>
           <li><a href="games.html" class="underline-link">游戏</a></li>
-          <li><a href="index.html#news" class="underline-link">最新消息</a></li>
-          <li><a href="story.html" class="underline-link">工作室</a></li>
-          <li><a href="index.html#contact" class="underline-link">联系</a></li>
+          <li><a href="news.html" class="underline-link">最新消息</a></li>
+          <li><a href="studio.html" class="underline-link">工作室</a></li>
+          <li><a href="contact.html" class="underline-link">联系</a></li>
         </ul>
       </nav>
       <div class="language-switcher" role="navigation">
         <a href="#" data-lang="en">EN</a>
         <a href="#" data-lang="zh-hans" class="active">简</a>
-        <a href="#" data-lang="zh-hant">繁</a>
+        
       </div>
     </div>
     <a id="header-menu" href="javascript:void(0);" aria-label="Menu">
@@ -242,43 +189,25 @@
     </p>
   </section>
 
-  <!-- ============ 首屏大图接口（图片占位） ============ -->
-  <section class="bookstore-hero-image">
-    <div class="bookstore-image-box">
-      <span class="image-caption">Exhibition · 展厅空间</span>
-    </div>
+  <!-- ============ 8 格小窗口 ============ -->
+  <section class="collection-grid" id="series">
+    <a href="exhibition-1.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-1.png'); background-size:cover; background-position:center;"><span>展厅1</span></a>
+    <a href="exhibition-2.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-2.png'); background-size:cover; background-position:center;"><span>展厅2</span></a>
+    <a href="exhibition-3.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-3.png'); background-size:cover; background-position:center;"><span>展厅3</span></a>
+    <a href="exhibition-4.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-4.png'); background-size:cover; background-position:center;"><span>展厅4</span></a>
+    <a href="exhibition-5.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-5.png'); background-size:cover; background-position:center;"><span>展厅5</span></a>
+    <a href="exhibition-6.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-6.png'); background-size:cover; background-position:center;"><span>展厅6</span></a>
+    <a href="exhibition-7.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-7.png'); background-size:cover; background-position:center;"><span>展厅7</span></a>
+    <a href="exhibition-8.html" class="collection-item" style="background-image:url('img/工程项目/展厅/工程项目-展厅-8.png'); background-size:cover; background-position:center;"><span>展厅8</span></a>
   </section>
 
   <!-- ============ 项目内容 ============ -->
   <section class="bookstore-page-content">
     <div class="bookstore-lead">
-      <div class="section-label">Exhibition Design</div>
+      <div class="section-label">Exhibition Projects</div>
       <p>
         展厅是内容与观众对话的舞台。我们以展陈叙事为核心，通过空间节奏、动线与视觉引导，让展品在恰当的光线与尺度中呈现，使观展成为一场有序而动人的发现旅程。
       </p>
-    </div>
-  </section>
-
-  <!-- ============ 餐饮大图窗口（全宽） ============ -->
-  <section class="bookstore-visual">
-    <div class="bookstore-visual-item">
-      <div class="bookstore-visual-box">
-        <span class="bookstore-visual-caption">Narrative · 叙事</span>
-      </div>
-      <div class="bookstore-visual-info">
-        <h4>展陈叙事</h4>
-        <p>以空间节奏与引导动线，串联展陈内容的起承转合。</p>
-      </div>
-    </div>
-
-    <div class="bookstore-visual-item">
-      <div class="bookstore-visual-box">
-        <span class="bookstore-visual-caption">Stage · 舞台</span>
-      </div>
-      <div class="bookstore-visual-info">
-        <h4>展品呈现</h4>
-        <p>以精准照明与尺度，让每件展品成为舞台的主角。</p>
-      </div>
     </div>
   </section>
 
@@ -346,30 +275,21 @@
         </div>
         <div class="footer-col">
           <h4>最新消息</h4>
-          <ul>
-            <li><a href="#">新闻稿</a></li>
-            <li><a href="#">活动</a></li>
-            <li><a href="#">创新思维</a></li>
-            <li><a href="#">媒体</a></li>
-            <li><a href="#">企业社会责任</a></li>
-            <li><a href="#">奖项</a></li>
-          </ul>
+          <ul><li><a href="activities.html">活动</a></li><li><a href="awards.html">奖项</a></li><li><a href="press.html">新闻稿</a></li><li><a href="csr.html">企业社会责任</a></li></ul>
         </div>
         <div class="footer-col">
           <h4>工作室</h4>
           <ul>
             <li><a href="story.html">我们的故事</a></li>
             <li><a href="team-members.html">我们的团队</a></li>
-            <li><a href="#">我们的项目</a></li>
-            <li><a href="approach.html">方法论</a></li>
+            <li><a href="projects.html">我们的项目</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>联系</h4>
           <ul>
-            <li><a href="#">上海办公室</a></li>
-            <li><a href="#">就业机会</a></li>
-            <li><a href="#">人才计划</a></li>
+            <li><a href="contact-us.html">联系我们</a></li>
+            <li><a href="careers.html">人才计划</a></li>
           </ul>
         </div>
       </div>
