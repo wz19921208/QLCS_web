@@ -117,6 +117,33 @@
     .projects-info-item.is-link:hover { background: #f0f0f0; }
     .projects-info-item.is-link:hover h3 { color: var(--color-accent); }
 
+    /* 书局类卡片：图片封面 + 文字左下方 */
+    .projects-info-item.is-link.has-bookstore-image {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 28px;
+      background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.14) 64%, rgba(0, 0, 0, 0.28) 100%),
+        url('img/工程项目/书局类卡片/书局类-封面.png');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .projects-info-item.is-link.has-bookstore-image .info-num,
+    .projects-info-item.is-link.has-bookstore-image h3,
+    .projects-info-item.is-link.has-bookstore-image p {
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .projects-info-item.is-link.has-bookstore-image .info-num { color: rgba(255, 255, 255, 0.85); }
+    .projects-info-item.is-link.has-bookstore-image h3 { margin-top: 10px; }
+    .projects-info-item.is-link.has-bookstore-image p { margin-top: 8px; }
+
     .projects-info-item .info-num {
       font-family: var(--font-en);
       font-size: 13px;
@@ -257,7 +284,7 @@
     <div class="projects-info-block">
       <div class="section-label">Project Types</div>
       <div class="projects-info-grid">
-        <a href="bookstore.html" class="projects-info-item is-link">
+        <a href="bookstore.html" class="projects-info-item is-link has-bookstore-image">
           <div class="info-num">01</div>
           <h3 id="bookstore">书局类</h3>
           <p>以阅读为核心的空间叙事，在书香与光影之间营造静谧而富有层次的文化场所。</p>
@@ -332,13 +359,6 @@
       </div>
     </div>
 
-    <!-- 工程作品占位（色块，后期替换为作品图） -->
-    <div class="projects-gallery">
-      <div class="projects-piece">Piece 01</div>
-      <div class="projects-piece">Piece 02</div>
-      <div class="projects-piece">Piece 03</div>
-    </div>
-
     <a class="back-home" href="index.html#projects">返回首页 →</a>
   </section>
 
@@ -375,8 +395,8 @@
             <li><a href="dance.html">舞蹈类</a></li>
             <li><a href="exhibition.html">展厅类</a></li>
             <li><a href="residence.html">住宅类</a></li>
-            <li><a href="cowork.html">共创办公室</a></li>
             <li><a href="small-project.html">小型项目</a></li>
+            <li><a href="cowork.html">共创办公室</a></li>
           </ul>
         </div>
 

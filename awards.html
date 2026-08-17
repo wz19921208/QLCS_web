@@ -72,7 +72,9 @@
 
     .news-item .news-thumb {
       height: 190px;
-      background: linear-gradient(135deg, #ccd2d8, #e6eaee);
+      background-color: #ccd2d8;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -122,22 +124,33 @@
     }
 
     .news-visual {
+      position: relative;
       margin-top: 70px;
       height: 420px;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.15), transparent 45%),
-        linear-gradient(135deg, #c8ccd2, #e4e8ec);
+      background-color: #c8ccd2;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    .news-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.26), rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.32));
+      pointer-events: none;
+    }
+
     .news-visual .visual-caption {
+      position: relative;
+      z-index: 1;
       color: #fff;
       letter-spacing: 4px;
       font-size: 14px;
       text-transform: uppercase;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.35);
     }
 
     .back-home {
@@ -224,7 +237,7 @@
 
   <!-- ============ 内容 ============ -->
   <section class="news-page-content">
-    <div class="news-lead"><p>奖项是外界的回应，也是我们持续耕耘的注脚。我们珍视来自行业与同行的每一次认可，并以此为起点走得更远。</p></div><div class="news-grid"><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.12</div><h3>年度空间设计奖</h3><p>以细腻的空间叙事与克制表达，获得年度公共空间设计类别的肯定。</p></div></article><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.09</div><h3>材料创新奖</h3><p>在材料与工艺的反复实验中，探索低环境影响的空间营造方式。</p></div></article><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.05</div><h3>可持续设计奖</h3><p>以绿色营造与人文关怀并重的实践，获评可持续设计领域的代表之作。</p></div></article></div><div class="news-visual"><div class="visual-caption">News Visual</div></div><a class="back-home" href="news.html">返回最新消息 →</a>
+    <div class="news-lead"><p>奖项是外界的回应，也是我们持续耕耘的注脚。我们珍视来自行业与同行的每一次认可，并以此为起点走得更远。</p></div><div class="news-grid"><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/奖项条目/年度空间设计奖-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.12</div><h3>年度空间设计奖</h3><p>以细腻的空间叙事与克制表达，获得年度公共空间设计类别的肯定。</p></div></article><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/奖项条目/材料创新奖-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.09</div><h3>材料创新奖</h3><p>在材料与工艺的反复实验中，探索低环境影响的空间营造方式。</p></div></article><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/奖项条目/可持续设计奖-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.05</div><h3>可持续设计奖</h3><p>以绿色营造与人文关怀并重的实践，获评可持续设计领域的代表之作。</p></div></article></div><div class="news-visual" style="background-image:url('img/最新消息/奖项条目/奖项-大图.png');"><div class="visual-caption">News Visual</div></div><a class="back-home" href="news.html">返回最新消息 →</a>
   </section>
 
   <!-- ============ 页脚 ============ -->
@@ -251,7 +264,6 @@
           <h4>工程项目</h4>
           <ul class="ft-col-2">
             <li><a href="bookstore.html">书局类</a></li>
-            <li><a href="cowork.html">共创办公室</a></li>
             <li><a href="dining.html">餐饮类</a></li>
             <li><a href="club.html">会所类</a></li>
             <li><a href="teahouse.html">茶室类</a></li>
@@ -262,6 +274,7 @@
             <li><a href="exhibition.html">展厅类</a></li>
             <li><a href="residence.html">住宅类</a></li>
             <li><a href="small-project.html">小型项目</a></li>
+            <li><a href="cowork.html">共创办公室</a></li>
           </ul>
         </div>
 

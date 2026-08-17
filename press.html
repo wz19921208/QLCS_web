@@ -72,7 +72,9 @@
 
     .news-item .news-thumb {
       height: 190px;
-      background: linear-gradient(135deg, #ccd2d8, #e6eaee);
+      background-color: #ccd2d8;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -122,22 +124,33 @@
     }
 
     .news-visual {
+      position: relative;
       margin-top: 70px;
       height: 420px;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.15), transparent 45%),
-        linear-gradient(135deg, #c8ccd2, #e4e8ec);
+      background-color: #c8ccd2;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    .news-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.26), rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.32));
+      pointer-events: none;
+    }
+
     .news-visual .visual-caption {
+      position: relative;
+      z-index: 1;
       color: #fff;
       letter-spacing: 4px;
       font-size: 14px;
       text-transform: uppercase;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.35);
     }
 
     .back-home {
@@ -224,7 +237,7 @@
 
   <!-- ============ 内容 ============ -->
   <section class="news-page-content">
-    <div class="news-lead"><p>我们通过新闻稿与媒体对话，分享项目背后的思考，也记录这个时代关于设计与文化的讨论。每一篇文字，都是我们对公共表达的一份郑重。</p></div><div class="news-grid"><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.12</div><h3>品牌发布</h3><p>对外发布工作室最新动态与项目进展，梳理我们一路走来的设计轨迹。</p></div></article><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.09</div><h3>媒体访谈</h3><p>就设计理念与东方美学接受行业媒体专访，分享观点与实践心得。</p></div></article><article class="news-item"><div class="news-thumb"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.05</div><h3>观点专栏</h3><p>在公开刊物撰文，呈现我们对空间、文化与人居关系的持续观察。</p></div></article></div><div class="news-visual"><div class="visual-caption">News Visual</div></div><a class="back-home" href="news.html">返回最新消息 →</a>
+    <div class="news-lead"><p>我们通过新闻稿与媒体对话，分享项目背后的思考，也记录这个时代关于设计与文化的讨论。每一篇文字，都是我们对公共表达的一份郑重。</p></div><div class="news-grid"><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/新闻稿条目/品牌发布-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.12</div><h3>品牌发布</h3><p>对外发布工作室最新动态与项目进展，梳理我们一路走来的设计轨迹。</p></div></article><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/新闻稿条目/媒体访谈-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.09</div><h3>媒体访谈</h3><p>就设计理念与东方美学接受行业媒体专访，分享观点与实践心得。</p></div></article><article class="news-item"><div class="news-thumb" style="background-image:url('img/最新消息/新闻稿条目/观点专栏-封面.png');"><span>News Image</span></div><div class="news-body"><div class="news-date">2024.05</div><h3>观点专栏</h3><p>在公开刊物撰文，呈现我们对空间、文化与人居关系的持续观察。</p></div></article></div><div class="news-visual" style="background-image:url('img/最新消息/新闻稿条目/新闻稿-大图.png');"><div class="visual-caption">News Visual</div></div><a class="back-home" href="news.html">返回最新消息 →</a>
   </section>
 
   <!-- ============ 页脚 ============ -->
@@ -251,7 +264,6 @@
           <h4>工程项目</h4>
           <ul class="ft-col-2">
             <li><a href="bookstore.html">书局类</a></li>
-            <li><a href="cowork.html">共创办公室</a></li>
             <li><a href="dining.html">餐饮类</a></li>
             <li><a href="club.html">会所类</a></li>
             <li><a href="teahouse.html">茶室类</a></li>
@@ -262,6 +274,7 @@
             <li><a href="exhibition.html">展厅类</a></li>
             <li><a href="residence.html">住宅类</a></li>
             <li><a href="small-project.html">小型项目</a></li>
+            <li><a href="cowork.html">共创办公室</a></li>
           </ul>
         </div>
 

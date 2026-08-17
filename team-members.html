@@ -67,7 +67,7 @@
       max-width: 900px;
     }
 
-    /* ===== 团队成员网格（Lead8 风格大头像） ===== */
+    /* ===== 团队成员网格（色块占位，后期替换为真实头像） ===== */
     .team-members {
       margin-top: 70px;
       border-top: 1px solid var(--color-line);
@@ -81,59 +81,42 @@
     .members-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 32px;
     }
 
-    /* 成员卡片 - 大头像，悬停缩放 & 信息浮现 */
     .member-card {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
       text-align: center;
-      background: #ffffff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
 
+    /* 成员头像占位 - 色块 */
     .member-avatar {
-      position: relative;
       width: 100%;
-      padding-top: 100%;
       overflow: hidden;
-      display: block;
+      position: relative;
+      padding-top: 100%;
+      border-radius: 2px;
     }
 
     .member-avatar .box {
       position: absolute;
       inset: 0;
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .member-card:hover .member-avatar .box {
-      transform: scale(1.08);
-    }
+    .member-avatar.b1 .box { background: linear-gradient(140deg, #c9c9c9, #eaeaea); }
+    .member-avatar.b2 .box { background: linear-gradient(140deg, #dbdbdb, #f0f0f0); }
+    .member-avatar.b3 .box { background: linear-gradient(140deg, #c2c2c2, #e6e6e6); }
+    .member-avatar.b4 .box { background: linear-gradient(140deg, #d0d0d0, #efefef); }
+    .member-avatar.b5 .box { background: linear-gradient(140deg, #cecece, #ededed); }
+    .member-avatar.b6 .box { background: linear-gradient(140deg, #c5c5c5, #e8e8e8); }
 
-    .member-avatar.b1 .box { background: linear-gradient(140deg, #4f6073, #7d90a3); }
-    .member-avatar.b2 .box { background: linear-gradient(140deg, #9a6f5c, #b98a74); }
-    .member-avatar.b3 .box { background: linear-gradient(140deg, #6b7d8a, #8d9fad); }
-    .member-avatar.b4 .box { background: linear-gradient(140deg, #8a7585, #a48fa0); }
-    .member-avatar.b5 .box { background: linear-gradient(140deg, #7c8a6f, #9aa98a); }
-    .member-avatar.b6 .box { background: linear-gradient(140deg, #a08a65, #b6a07c); }
-
-    /* 姓名 / 职位信息条 */
-    .member-meta {
-      padding: 20px 18px 22px;
-      background: #ffffff;
-      transition: background 0.4s ease;
-    }
-
-    .member-meta .member-name {
-      font-size: 18px;
+    .member-card .member-name {
+      margin-top: 18px;
+      font-size: 17px;
       font-weight: 400;
       letter-spacing: 1px;
-      color: var(--color-accent);
     }
 
-    .member-meta .member-role {
+    .member-card .member-role {
       margin-top: 6px;
       font-size: 12px;
       letter-spacing: 2px;
@@ -141,136 +124,6 @@
       text-transform: uppercase;
     }
 
-    .member-meta .member-bio {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      margin-top: 0;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #555;
-      transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
-    }
-
-    .member-card:hover .member-meta {
-      background: #fafafa;
-    }
-
-    .member-hint {
-      margin-top: 12px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--color-accent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .member-card:hover .member-hint {
-      opacity: 1;
-    }
-
-    /* ===== 成员详情浮层 ===== */
-    .member-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0,0,0,0.55);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-
-    .member-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .member-modal {
-      display: flex;
-      max-width: 820px;
-      width: 100%;
-      background: #fff;
-      position: relative;
-      transform: translateY(24px);
-      transition: transform 0.4s ease;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-
-    .member-overlay.open .member-modal {
-      transform: translateY(0);
-    }
-
-    .member-modal .modal-avatar {
-      width: 300px;
-      flex: 0 0 300px;
-      min-height: 380px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .modal-avatar.b1 { background: linear-gradient(140deg, #4f6073, #7d90a3); }
-    .modal-avatar.b2 { background: linear-gradient(140deg, #9a6f5c, #b98a74); }
-    .modal-avatar.b3 { background: linear-gradient(140deg, #6b7d8a, #8d9fad); }
-    .modal-avatar.b4 { background: linear-gradient(140deg, #8a7585, #a48fa0); }
-    .modal-avatar.b5 { background: linear-gradient(140deg, #7c8a6f, #9aa98a); }
-    .modal-avatar.b6 { background: linear-gradient(140deg, #a08a65, #b6a07c); }
-
-    .member-modal .modal-info {
-      padding: 44px 44px 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .member-modal .modal-name {
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: 1px;
-      color: var(--color-accent);
-    }
-
-    .member-modal .modal-role {
-      margin-top: 8px;
-      font-size: 13px;
-      letter-spacing: 2px;
-      color: var(--color-muted);
-      text-transform: uppercase;
-    }
-
-    .member-modal .modal-bio {
-      margin-top: 24px;
-      font-size: 15px;
-      line-height: 2;
-      color: #555;
-      font-weight: 300;
-    }
-
-    .member-modal .modal-bio.js-name { }
-
-    .member-overlay-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      font-size: 28px;
-      color: #999;
-      cursor: pointer;
-      line-height: 1;
-      border: none;
-      background: none;
-      z-index: 10;
-    }
-
-    .member-overlay-close:hover {
-      color: var(--color-accent);
-    }
-
-    body.modal-open {
-      overflow: hidden;
-    }
     /* ===== 团队图片区（色块占位，后期替换为团队照片） ===== */
     .members-gallery {
       margin-top: 70px;
@@ -365,23 +218,6 @@
       .gallery-grid {
         grid-template-columns: 1fr;
       }
-      .member-overlay {
-        align-items: flex-end;
-        padding: 0;
-      }
-      .member-modal {
-        flex-direction: column;
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-      .member-modal .modal-avatar {
-        width: 100%;
-        flex: none;
-        min-height: 260px;
-      }
-      .member-modal .modal-info {
-        padding: 32px 24px;
-      }
     }
   </style>
 </head>
@@ -412,9 +248,9 @@
           <li><a href="jewelry.html" class="underline-link">珠宝项目</a></li>
           <li><a href="fashion.html" class="underline-link">服装项目</a></li>
           <li><a href="games.html" class="underline-link">游戏</a></li>
-          <li><a href="news.html" class="underline-link">最新消息</a></li>
-          <li><a href="studio.html" class="underline-link">工作室</a></li>
-          <li><a href="contact.html" class="underline-link">联系</a></li>
+          <li><a href="index.html#news" class="underline-link">最新消息</a></li>
+          <li><a href="index.html#studio" class="underline-link">工作室</a></li>
+          <li><a href="index.html#contact" class="underline-link">联系</a></li>
         </ul>
       </nav>
 
@@ -422,7 +258,7 @@
       <div class="language-switcher" role="navigation">
         <a href="#" data-lang="en">EN</a>
         <a href="#" data-lang="zh-hans" class="active">简</a>
-        
+        <a href="#" data-lang="zh-hant">繁</a>
       </div>
     </div>
 
@@ -458,53 +294,35 @@
     <div class="team-members">
       <div class="section-label">Team Members</div>
       <div class="members-grid">
-        <div class="member-card" data-name="XXX" data-role="Founder · 创始人" data-img="b1" data-bio="作为创始人，XXX引领团队的创意方向，将跨领域的思考注入每一个项目，二十余年间构建起以人文为核、文化为底的国际化设计实践。">
-          <div class="member-avatar b1"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Founder · 创始人</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b1"><div class="box" style="background:url('img/工作室/团队/成员1.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ①</div>
+          <div class="member-role">Founder · 创始人</div>
         </div>
-        <div class="member-card" data-name="XXX" data-role="Design Director · 设计总监" data-img="b2" data-bio="XXX负责项目的整体设计统筹，擅长在建筑、室内与品牌之间建立有机联系，以细腻的感知推动创意落地。">
-          <div class="member-avatar b2"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Design Director · 设计总监</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b2"><div class="box" style="background:url('img/工作室/团队/成员2.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ②</div>
+          <div class="member-role">Design Director</div>
         </div>
-        <div class="member-card" data-name="XXX" data-role="Architect · 建筑师" data-img="b3" data-bio="专注于空间与构造的推敲，以结构感和节奏感见长，为项目注入坚实而富有温度的建筑语言。">
-          <div class="member-avatar b3"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Architect · 建筑师</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b3"><div class="box" style="background:url('img/工作室/团队/成员3.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ③</div>
+          <div class="member-role">Architect</div>
         </div>
-        <div class="member-card" data-name="XXX" data-role="Brand Strategist · 品牌策略师" data-img="b4" data-bio="以策略思维梳理品牌叙事，将文化意涵转化为清晰而动人的视觉表达，连接品牌与受众的情感。">
-          <div class="member-avatar b4"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Brand Strategist · 品牌策略师</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b4"><div class="box" style="background:url('img/工作室/团队/成员4.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ④</div>
+          <div class="member-role">Brand Strategist</div>
         </div>
-        <div class="member-card" data-name="XXX" data-role="Interior Designer · 室内设计师" data-img="b5" data-bio="XXX深耕室内空间的营造，以细腻的比例与材质把握，让每一处细节都服务于人的真实体验与感受。">
-          <div class="member-avatar b5"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Interior Designer · 室内设计师</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b5"><div class="box" style="background:url('img/工作室/团队/成员5.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ⑤</div>
+          <div class="member-role">Interior Designer</div>
         </div>
-        <div class="member-card" data-name="XXX" data-role="Marketing Expert · 市场专家" data-img="b6" data-bio="将市场洞察融入团队协作，负责品牌传播与用户连接，让设计的价值更好地被看见与被感知。">
-          <div class="member-avatar b6"><div class="box"></div></div>
-          <div class="member-meta">
-            <div class="member-name">XXX</div>
-            <div class="member-role">Marketing Expert · 市场专家</div>
-            <div class="member-hint">查看详情 →</div>
-          </div>
+        <div class="member-card">
+          <div class="member-avatar b6"><div class="box" style="background:url('img/工作室/团队/成员6.png') center/cover no-repeat;"></div></div>
+          <div class="member-name">成员姓名 ⑥</div>
+          <div class="member-role">Marketing Expert</div>
         </div>
       </div>
     </div>
@@ -514,22 +332,22 @@
       <div class="section-label">Team Gallery</div>
       <div class="gallery-grid">
         <div class="gallery-item g1">
-          <div class="box"></div>
+          <div class="box" style="background:url('img/工作室/团队/画廊-工作瞬间.png') center/cover no-repeat;"></div>
           <div class="gallery-caption">团队工作瞬间</div>
         </div>
         <div class="gallery-item g2">
-          <div class="box"></div>
+          <div class="box" style="background:url('img/工作室/团队/画廊-工作室日常.png') center/cover no-repeat;"></div>
           <div class="gallery-caption">工作室日常</div>
         </div>
         <div class="gallery-item g3">
-          <div class="box"></div>
+          <div class="box" style="background:url('img/工作室/团队/画廊-团队合影.png') center/cover no-repeat;"></div>
           <div class="gallery-caption">团队合影</div>
         </div>
       </div>
     </div>
 
     <!-- 返回首页 -->
-    <a class="back-home" href="story.html">返回首页 →</a>
+    <a class="back-home" href="index.html#studio">返回首页 →</a>
   </section>
 
   <!-- ============ 页脚 ============ -->
@@ -555,72 +373,83 @@
         <div class="footer-col">
           <h4>工程项目</h4>
           <ul class="ft-col-2">
-            <li><a href="bookstore.html">书局类</a></li>
-            <li><a href="cowork.html">共创办公室</a></li>
-            <li><a href="dining.html">餐饮类</a></li>
-            <li><a href="club.html">会所类</a></li>
-            <li><a href="teahouse.html">茶室类</a></li>
-            <li><a href="bar.html">酒吧类</a></li>
-            <li><a href="fitness.html">健身类</a></li>
-            <li><a href="yoga.html">瑜伽类</a></li>
-            <li><a href="dance.html">舞蹈类</a></li>
-            <li><a href="exhibition.html">展厅类</a></li>
-            <li><a href="residence.html">住宅类</a></li>
-            <li><a href="small-project.html">小型项目</a></li>
+            <li><a href="projects.html#bookstore">书局类</a></li>
+            <li><a href="projects.html#dining">餐饮类</a></li>
+            <li><a href="projects.html#club">会所类</a></li>
+            <li><a href="projects.html#teahouse">茶室类</a></li>
+            <li><a href="projects.html#bar">酒吧类</a></li>
+            <li><a href="projects.html#fitness">健身类</a></li>
+            <li><a href="projects.html#yoga">瑜伽类</a></li>
+            <li><a href="projects.html#dance">舞蹈类</a></li>
+            <li><a href="projects.html#exhibition">展厅类</a></li>
+            <li><a href="projects.html#residence">住宅类</a></li>
+            <li><a href="projects.html#small-project">小型项目</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>剪纸项目</h4>
           <ul>
-            <li><a href="paper-personal.html">个人收藏</a></li>
-            <li><a href="paper-corporate.html">企业订单</a></li>
-            <li><a href="paper-teamwork.html">团建活动</a></li>
-            <li><a href="paper-government.html">政府活动</a></li>
-            <li><a href="paper-pattern.html">图案定制</a></li>
+            <li><a href="papercraft.html#personal">个人收藏</a></li>
+            <li><a href="papercraft.html#corporate">企业订单</a></li>
+            <li><a href="papercraft.html#teamwork">团建活动</a></li>
+            <li><a href="papercraft.html#government">政府活动</a></li>
+            <li><a href="papercraft.html#pattern">图案定制</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>珠宝项目</h4>
           <ul>
-            <li><a href="jewelry-necklace.html">项链系列</a></li>
-            <li><a href="jewelry-bracelet.html">手链系列</a></li>
-            <li><a href="jewelry-ring.html">戒指系列</a></li>
-            <li><a href="jewelry-earring.html">耳环系列</a></li>
-            <li><a href="jewelry-herbal.html">中药定制</a></li>
+            <li><a href="jewelry.html#necklace">项链系列</a></li>
+            <li><a href="jewelry.html#bracelet">手链系列</a></li>
+            <li><a href="jewelry.html#ring">戒指系列</a></li>
+            <li><a href="jewelry.html#earring">耳环系列</a></li>
+            <li><a href="jewelry.html#herbal">中药定制</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>服装项目</h4>
           <ul>
-            <li><a href="fashion-top.html">上衣系列</a></li>
-            <li><a href="fashion-skirt.html">裙子系列</a></li>
-            <li><a href="fashion-dress.html">裙装系列</a></li>
-            <li><a href="fashion-suit.html">套装系列</a></li>
-            <li><a href="fashion-custom.html">私人定制</a></li>
+            <li><a href="fashion.html#top">上衣系列</a></li>
+            <li><a href="fashion.html#skirt">裙子系列</a></li>
+            <li><a href="fashion.html#dress">裙装系列</a></li>
+            <li><a href="fashion.html#suit">套装系列</a></li>
+            <li><a href="fashion.html#custom">私人定制</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>最新消息</h4><ul><li><a href="activities.html">活动</a></li><li><a href="awards.html">奖项</a></li><li><a href="press.html">新闻稿</a></li><li><a href="csr.html">企业社会责任</a></li></ul>
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="#">新闻稿</a></li>
+            <li><a href="#">活动</a></li>
+            <li><a href="#">创新思维</a></li>
+            <li><a href="#">媒体</a></li>
+            <li><a href="#">企业社会责任</a></li>
+            <li><a href="#">奖项</a></li>
+          </ul>
         </div>
 
         <div class="footer-col">
           <h4>工作室</h4>
           <ul>
+
+
             <li><a href="story.html">我们的故事</a></li>
-            <li><a href="team-members.html">我们的团队</a></li>
-            <li><a href="projects.html">我们的项目</a></li>
+                          <li><a href="team-members.html">我们的团队</a></li>
+            <li><a href="#">我们的项目</a></li>
+            <li><a href="approach.html">方法论</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>联系</h4>
           <ul>
-            <li><a href="contact-us.html">联系我们</a></li>
-            <li><a href="careers.html">人才计划</a></li>
+            <li><a href="#">上海办公室</a></li>
+            <li><a href="#">就业机会</a></li>
+            <li><a href="#">人才计划</a></li>
           </ul>
         </div>
 
@@ -629,7 +458,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 青鸾传世</span>
+      <span>© 2024 青鸾传世</span>
       <div class="footer-legal">
         <a href="#">使用条款</a>
         <span class="legal-divider">|</span>
@@ -637,19 +466,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- ============ 成员详情浮层 ============ -->
-  <div class="member-overlay" id="member-overlay">
-    <div class="member-modal">
-      <button class="member-overlay-close" type="button" aria-label="关闭">&times;</button>
-      <div class="modal-avatar b1"></div>
-      <div class="modal-info">
-        <div class="modal-name"></div>
-        <div class="modal-role"></div>
-        <div class="modal-bio"></div>
-      </div>
-    </div>
-  </div>
 
   <!-- ============ 脚本 ============ -->
   <script src="js/script.js"></script>
